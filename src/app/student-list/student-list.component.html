@@ -1,0 +1,97 @@
+  <img src="assets/images/school3.jpeg" alt="School Image" class="profile-image" />
+
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div>
+      <label for="studentname">Name:</label>
+      <input id="studentname" formControlName="studentname" appHighlight />
+      <div *ngIf="studentForm.get('studentname')?.invalid && studentForm.get('studentname')?.touched">
+        Name is required (min length 4)
+      </div>
+    </div>
+
+    <div>
+      <label for="studentdept">Department:</label>
+      <input id="studentdept" formControlName="studentdept" appHighlight />
+      <div *ngIf="studentForm.get('studentdept')?.invalid && studentForm.get('studentdept')?.touched">
+        Department is required
+      </div>
+    </div>
+
+    <div>
+      <label for="studentAge">Age:</label>
+      <input id="studentAge" type="number" formControlName="studentAge" appHighlight />
+      <div *ngIf="studentForm.get('studentAge')?.invalid && studentForm.get('studentAge')?.touched">
+        Age is required (between 3 and 16)
+      </div>
+    </div>
+
+    <div>
+      <label for="mobile">Parent's Mobile:</label>
+      <input id="mobile" type="tel" formControlName="mobile" maxlength="10" placeholder="Enter your mobile number" appHighlight />
+      
+      <div *ngIf="studentForm.get('mobile')?.invalid && studentForm.get('mobile')?.touched">
+        Valid mobile number is required (10 digits).
+      </div>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" appHighlight />
+      <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched">
+        Valid email is required
+      </div>
+    </div>
+
+    <div>
+      <label for="date">Date:</label>
+      <input id="date" type="date" formControlName="date" appHighlight />
+      <div *ngIf="studentForm.get('date')?.invalid && studentForm.get('date')?.touched">
+        Date is required
+      </div>
+    </div>
+
+    <div>
+      <label for="studentimage">Image:</label>
+      <input id="studentimage" type="file" (change)="onImageChange($event)" />
+      <div *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Preview Image" style="max-width: 100px; margin-top: 10px;" />
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="studentForm.invalid" style="background-color: rgb(43, 145, 253); color: white;">Add Student</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>                     
+        <th>Age</th>
+        <th>Department</th>
+        <th>Parent's Mobile</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Student Profile Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.studentid }}</td>
+        <td>{{ student.studentname }}</td>
+        <td>{{ student.studentAge }}</td>
+        <td>{{ student.studentdept }}</td>
+        <td>{{ student.mobile }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.date | date: 'MM/dd/yyyy' }}</td>
+        <td>
+          <img *ngIf="student.studentimage" [src]="student.studentimage" alt="Student Image" style="width: 50px; height: auto;" />
+        </td>
+        <td>
+          <button (click)="navigateToDetails(student.studentid)">Edit 🟦</button>
+          <button (click)="deleteStudent(student.studentid)">Delete 🟥</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>  
+  <button (click)="logout()">Logout</button>

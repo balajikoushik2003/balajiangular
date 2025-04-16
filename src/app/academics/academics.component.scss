@@ -1,0 +1,73 @@
+#academics {
+  padding: 2rem;
+
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap; 
+  }
+
+  .card {
+    flex: 1 1 calc(33.33% - 1rem); 
+    text-align: center;
+    box-sizing: border-box;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 250px; 
+      object-fit: cover; 
+      display: block;
+      margin: 0 auto;
+    }
+
+    h3 {
+      margin-top: 1rem;
+    }
+
+    p {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+#student-departments {
+  margin-top: 2rem; 
+  padding: 2rem;
+
+  h2 {
+    margin-bottom: 1rem; 
+  }
+
+  table {
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 1rem; 
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem; 
+      text-align: left; 
+    }
+
+    th {
+      background-color: #f3f3f3; 
+      font-weight: bold; 
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9; 
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+
+  p {
+    margin-top: 1rem; 
+    font-size: 1.1rem; 
+    color: #666; 
+  }
+}

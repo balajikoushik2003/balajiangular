@@ -1,0 +1,38 @@
+<div class="header">
+  <h1>Welcome to Knowledge School for a Bright Future</h1>
+</div>
+<h6>DATE :</h6>
+<div>{{ todayDate | date: 'dd/MM/yyyy' }}</div>
+
+<img src="assets/images/school2.jpg" alt="School Image 1" class="profile-image" />
+
+<router-outlet></router-outlet>
+
+<p>Feedback to see: {{ sampleText }}</p>
+<input type="text" [(ngModel)]="sampleText" placeholder="Good to see you again" appHighlight />
+
+
+<p style="margin-top: 10px; color: blue;">
+  Feedback: {{ sampleText }}
+</p>
+<button (click)="updateSampleText()">Update Text</button>
+
+
+
+<div class="about-me-container">
+  <img src="assets/images/icon.jpg" alt="Icon of the project" class="profile-image" />
+  <div class="about-me-text">
+    <h3>Designed and Developed by BKS</h3>
+    <p>Welcome to my project! I hope you find it useful and user-friendly.</p>
+    <textarea>Thank you for visiting</textarea>
+    <h2>Contact Information</h2>
+    <p>
+      E-mail: <a href="mailto:balajikoushik07&#64;gmail.com">balajikoushik07&#64;gmail.com</a><br />
+      LinkedIn: <a href="https://www.linkedin.com/in/balaji-koushik-7b0a52301" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/balaji-koushik-7b0a52301</a><br />
+      Mobile: <a href="tel:+91 6361656372">6361656372</a>
+    </p>
+  </div>
+</div>
+
+<div class="navigation"></div>
+

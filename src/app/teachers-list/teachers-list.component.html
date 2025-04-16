@@ -1,0 +1,16 @@
+<div *ngIf="teachers.length > 0; else noTeachers" class="teacher-list-container">
+    <div class="header">Name</div>
+    <div class="header">Age</div>
+    <div class="header">Subject</div>
+    <div class="header">Mobile</div>
+    <div *ngFor="let teacher of teachers" class="teacher">
+      <div>{{ teacher.TeacherName }}</div>
+      <div>{{ teacher.TeacherAge }}</div>
+      <div>{{ teacher.TeachersSubject }}</div>
+      <div>{{ teacher.TeachersMobile }}</div>
+    </div>
+  </div>
+  <ng-template #noTeachers>
+    <div class="no-teachers">No teachers available.</div>
+  </ng-template>
+  <button (click)="logout()">Logout</button>

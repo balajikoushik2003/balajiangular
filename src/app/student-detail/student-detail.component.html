@@ -1,0 +1,111 @@
+<div class="student-detail-container">
+  <h2>Student Details</h2>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="studentname">Name:</label>
+      <input
+        id="studentname"
+        type="text"
+        formControlName="studentname"
+        placeholder="Enter student name"
+      />
+      <small *ngIf="studentForm.get('studentname')?.invalid && studentForm.get('studentname')?.touched">
+        Name is required and must be at least 4 characters.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="studentdept">Department:</label>
+      <input
+        id="studentdept"
+        type="text"
+        formControlName="studentdept"
+        placeholder="Enter department"
+      />
+      <small *ngIf="studentForm.get('studentdept')?.invalid && studentForm.get('studentdept')?.touched">
+        Department is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="studentAge">Age:</label>
+      <input
+        id="studentAge"
+        type="number"
+        formControlName="studentAge"
+        placeholder="Enter age"
+      />
+      <small *ngIf="studentForm.get('studentAge')?.invalid && studentForm.get('studentAge')?.touched">
+        Age is required and must be between 3 and 16.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="mobile">Parent's Mobile:</label>
+      <input
+        id="mobile"
+        type="text"
+        formControlName="mobile"
+        maxlength="10"
+        placeholder="Enter mobile number"
+      />
+      <small *ngIf="studentForm.get('mobile')?.invalid && studentForm.get('mobile')?.touched">
+        Mobile number is required and must be 10 digits.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter email"
+      />
+      <small *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched">
+        Valid email is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input
+        id="date"
+        type="date"
+        formControlName="date"
+      />
+      <small *ngIf="studentForm.get('date')?.invalid && studentForm.get('date')?.touched">
+        Date is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image:</label>
+      <input
+        id="imageUrl"
+        type="file"
+        (change)="onImageChange($event)"
+      />
+      <div *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Student Image" class="image-preview" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Alternate Numbers:</label>
+      <div formArrayName="phones">
+        <div *ngFor="let phone of phones.controls; let i = index" [formGroupName]="i" class="phone-group">
+          <input type="text" formControlName="mobile" maxlength="10" placeholder="Enter additional mobile number" />
+          <button type="button" class="remove-phone" (click)="phones.removeAt(i)">Remove</button>
+          <small *ngIf="phone.get('mobile')?.invalid && phone.get('mobile')?.touched">
+            Mobile number is required and must be 10 digits.
+          </small>
+        </div>
+      </div>
+      <button type="button" class="add-phone" (click)="phones.push(createPhoneFormGroup())">Add Phone</button>
+    </div>
+
+    <button type="submit" [disabled]="studentForm.invalid">Submit</button>
+  </form>
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>

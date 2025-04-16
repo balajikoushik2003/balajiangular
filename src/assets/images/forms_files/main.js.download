@@ -1,0 +1,199 @@
+// src/main.ts
+import * as __NgCli_bootstrap_1 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_platform-browser.js?v=b21bd08e";
+
+// src/app/app.module.ts
+import { NgModule } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+import { BrowserModule } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_platform-browser.js?v=b21bd08e";
+
+// src/app/app.component.ts
+import { Component } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+import * as i0 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+var AppComponent = class _AppComponent {
+  constructor() {
+    this.title = "angular17_without_standalone";
+  }
+  static {
+    this.\u0275fac = function AppComponent_Factory(t) {
+      return new (t || _AppComponent)();
+    };
+  }
+  static {
+    this.\u0275cmp = /* @__PURE__ */ i0.\u0275\u0275defineComponent({ type: _AppComponent, selectors: [["app-root"]], decls: 0, vars: 0, template: function AppComponent_Template(rf, ctx) {
+    }, styles: ["\n\nh1[_ngcontent-%COMP%] {\n  color: #000000;\n  text-align: center;\n  background-color: white;\n}\nh2[_ngcontent-%COMP%] {\n  color: hsl(0, 0%, 100%);\n  text-align: center;\n  background-color: #000000;\n  font-family: verdana;\n  font-size: 20px;\n}\n/*# sourceMappingURL=app.component.css.map */"] });
+  }
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i0.\u0275setClassDebugInfo(AppComponent, { className: "AppComponent", filePath: "src\\app\\app.component.ts", lineNumber: 8 });
+})();
+
+// src/app/app.module.ts
+import { ReactiveFormsModule } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_forms.js?v=b21bd08e";
+
+// src/app/teacher-form/teacher-form.component.ts
+import { Component as Component2, Input, Output, EventEmitter } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+import { Validators } from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_forms.js?v=b21bd08e";
+import * as i02 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+import * as i1 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_forms.js?v=b21bd08e";
+import * as i2 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_common_http.js?v=b21bd08e";
+import * as i3 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_common.js?v=b21bd08e";
+function TeacherFormComponent_h2_0_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "h2");
+    i02.\u0275\u0275text(1, "Edit Teacher");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function TeacherFormComponent_span_13_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 12);
+    i02.\u0275\u0275text(1, " Name is required ");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function TeacherFormComponent_span_21_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "span", 12);
+    i02.\u0275\u0275text(1, " Subject is required ");
+    i02.\u0275\u0275elementEnd();
+  }
+}
+function TeacherFormComponent_div_24_Template(rf, ctx) {
+  if (rf & 1) {
+    i02.\u0275\u0275elementStart(0, "div")(1, "p", 13);
+    i02.\u0275\u0275text(2, "Teacher updated successfully!");
+    i02.\u0275\u0275elementEnd()();
+  }
+}
+var TeacherFormComponent = class _TeacherFormComponent {
+  constructor(fb, http) {
+    this.fb = fb;
+    this.http = http;
+    this.teacher = null;
+    this.updateTeacher = new EventEmitter();
+    this.formSubmitted = false;
+    this.teacherForm = this.fb.group({
+      id: ["", Validators.required],
+      name: ["", Validators.required],
+      subject: ["", Validators.required]
+    });
+  }
+  ngOnChanges() {
+    if (this.teacher) {
+      this.teacherForm.setValue({
+        id: this.teacher.id,
+        name: this.teacher.name,
+        subject: this.teacher.subject
+      });
+    }
+  }
+  onSubmit() {
+    this.formSubmitted = true;
+    if (this.teacherForm.valid) {
+      const updatedTeacher = this.teacherForm.value;
+      this.http.put(`http://localhost:4000/teachers/${updatedTeacher.id}`, updatedTeacher).subscribe({
+        next: (data) => {
+          console.log("Teacher updated:", data);
+          this.updateTeacher.emit();
+        },
+        error: (error) => {
+          console.error("Error updating teacher:", error);
+        }
+      });
+    }
+  }
+  static {
+    this.\u0275fac = function TeacherFormComponent_Factory(t) {
+      return new (t || _TeacherFormComponent)(i02.\u0275\u0275directiveInject(i1.FormBuilder), i02.\u0275\u0275directiveInject(i2.HttpClient));
+    };
+  }
+  static {
+    this.\u0275cmp = /* @__PURE__ */ i02.\u0275\u0275defineComponent({ type: _TeacherFormComponent, selectors: [["app-teacher-form"]], inputs: { teacher: "teacher" }, outputs: { updateTeacher: "updateTeacher" }, features: [i02.\u0275\u0275NgOnChangesFeature], decls: 25, vars: 10, consts: [[4, "ngIf"], [1, "form-container", 3, "ngSubmit", "formGroup"], [1, "form-group"], ["for", "id"], ["id", "id", "formControlName", "id", "placeholder", "Enter ID", "readonly", ""], ["for", "name"], [1, "required"], ["id", "name", "formControlName", "name", "placeholder", "Enter name", "required", ""], ["class", "error-message", 4, "ngIf"], ["for", "subject"], ["id", "subject", "formControlName", "subject", "placeholder", "Enter subject", "required", ""], ["type", "submit", 1, "btn-submit", 3, "disabled"], [1, "error-message"], [1, "success-message"]], template: function TeacherFormComponent_Template(rf, ctx) {
+      if (rf & 1) {
+        i02.\u0275\u0275template(0, TeacherFormComponent_h2_0_Template, 2, 0, "h2", 0);
+        i02.\u0275\u0275elementStart(1, "form", 1);
+        i02.\u0275\u0275listener("ngSubmit", function TeacherFormComponent_Template_form_ngSubmit_1_listener() {
+          return ctx.onSubmit();
+        });
+        i02.\u0275\u0275elementStart(2, "div", 2)(3, "label", 3);
+        i02.\u0275\u0275text(4, "ID:");
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275element(5, "input", 4);
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275elementStart(6, "div", 2)(7, "label", 5);
+        i02.\u0275\u0275text(8, "Name ");
+        i02.\u0275\u0275elementStart(9, "span", 6);
+        i02.\u0275\u0275text(10, "*");
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275text(11, ":");
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275element(12, "input", 7);
+        i02.\u0275\u0275template(13, TeacherFormComponent_span_13_Template, 2, 0, "span", 8);
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275elementStart(14, "div", 2)(15, "label", 9);
+        i02.\u0275\u0275text(16, "Subject ");
+        i02.\u0275\u0275elementStart(17, "span", 6);
+        i02.\u0275\u0275text(18, "*");
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275text(19, ":");
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275element(20, "input", 10);
+        i02.\u0275\u0275template(21, TeacherFormComponent_span_21_Template, 2, 0, "span", 8);
+        i02.\u0275\u0275elementEnd();
+        i02.\u0275\u0275elementStart(22, "button", 11);
+        i02.\u0275\u0275text(23, " Update Teacher ");
+        i02.\u0275\u0275elementEnd()();
+        i02.\u0275\u0275template(24, TeacherFormComponent_div_24_Template, 3, 0, "div", 0);
+      }
+      if (rf & 2) {
+        let tmp_2_0;
+        let tmp_3_0;
+        let tmp_4_0;
+        let tmp_5_0;
+        i02.\u0275\u0275property("ngIf", ctx.teacher);
+        i02.\u0275\u0275advance();
+        i02.\u0275\u0275property("formGroup", ctx.teacherForm);
+        i02.\u0275\u0275advance(11);
+        i02.\u0275\u0275classProp("is-invalid", ((tmp_2_0 = ctx.teacherForm.get("name")) == null ? null : tmp_2_0.invalid) && ((tmp_2_0 = ctx.teacherForm.get("name")) == null ? null : tmp_2_0.touched));
+        i02.\u0275\u0275advance();
+        i02.\u0275\u0275property("ngIf", ((tmp_3_0 = ctx.teacherForm.get("name")) == null ? null : tmp_3_0.invalid) && ((tmp_3_0 = ctx.teacherForm.get("name")) == null ? null : tmp_3_0.touched));
+        i02.\u0275\u0275advance(7);
+        i02.\u0275\u0275classProp("is-invalid", ((tmp_4_0 = ctx.teacherForm.get("subject")) == null ? null : tmp_4_0.invalid) && ((tmp_4_0 = ctx.teacherForm.get("subject")) == null ? null : tmp_4_0.touched));
+        i02.\u0275\u0275advance();
+        i02.\u0275\u0275property("ngIf", ((tmp_5_0 = ctx.teacherForm.get("subject")) == null ? null : tmp_5_0.invalid) && ((tmp_5_0 = ctx.teacherForm.get("subject")) == null ? null : tmp_5_0.touched));
+        i02.\u0275\u0275advance();
+        i02.\u0275\u0275property("disabled", ctx.teacherForm.invalid);
+        i02.\u0275\u0275advance(2);
+        i02.\u0275\u0275property("ngIf", ctx.formSubmitted);
+      }
+    }, dependencies: [i3.NgIf, i1.\u0275NgNoValidate, i1.DefaultValueAccessor, i1.NgControlStatus, i1.NgControlStatusGroup, i1.RequiredValidator, i1.FormGroupDirective, i1.FormControlName], styles: ["\n\n.form-container[_ngcontent-%COMP%] {\n  max-width: 500px;\n  margin: 20px auto;\n  padding: 20px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  background-color: #f9f9f9;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n}\n.form-group[_ngcontent-%COMP%] {\n  margin-bottom: 20px;\n}\nlabel[_ngcontent-%COMP%] {\n  display: block;\n  font-weight: bold;\n  margin-bottom: 5px;\n  color: #333;\n}\ninput[_ngcontent-%COMP%], textarea[_ngcontent-%COMP%], select[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 10px;\n  font-size: 14px;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  background-color: #fff;\n  box-sizing: border-box;\n}\ninput[_ngcontent-%COMP%]:focus, textarea[_ngcontent-%COMP%]:focus, select[_ngcontent-%COMP%]:focus {\n  border-color: #007bff;\n  outline: none;\n  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);\n}\nspan[_ngcontent-%COMP%] {\n  color: red;\n  font-size: 12px;\n  margin-top: 5px;\n  display: block;\n}\nbutton[_ngcontent-%COMP%] {\n  width: 100%;\n  padding: 12px;\n  background-color: #28a745;\n  border: none;\n  border-radius: 4px;\n  color: #fff;\n  font-size: 16px;\n  cursor: pointer;\n  text-transform: uppercase;\n}\nbutton[_ngcontent-%COMP%]:hover {\n  background-color: #218838;\n}\nbutton[_ngcontent-%COMP%]:disabled {\n  background-color: #ccc;\n  cursor: not-allowed;\n}\ninput[readonly][_ngcontent-%COMP%] {\n  background-color: #e9ecef;\n  cursor: not-allowed;\n}\n@media (max-width: 768px) {\n  .form-container[_ngcontent-%COMP%] {\n    padding: 15px;\n  }\n  button[_ngcontent-%COMP%] {\n    font-size: 14px;\n  }\n}\n/*# sourceMappingURL=teacher-form.component.css.map */"] });
+  }
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && i02.\u0275setClassDebugInfo(TeacherFormComponent, { className: "TeacherFormComponent", filePath: "src\\app\\teacher-form\\teacher-form.component.ts", lineNumber: 10 });
+})();
+
+// src/app/app.module.ts
+import * as i03 from "/@fs/C:/Reactive froms/angular17_without_standalone/.angular/cache/17.3.11/vite/deps/@angular_core.js?v=b21bd08e";
+var AppModule = class _AppModule {
+  static {
+    this.\u0275fac = function AppModule_Factory(t) {
+      return new (t || _AppModule)();
+    };
+  }
+  static {
+    this.\u0275mod = /* @__PURE__ */ i03.\u0275\u0275defineNgModule({ type: _AppModule, bootstrap: [AppComponent] });
+  }
+  static {
+    this.\u0275inj = /* @__PURE__ */ i03.\u0275\u0275defineInjector({ imports: [
+      BrowserModule,
+      // <-- Required for the root module (bootstrapping the app)
+      ReactiveFormsModule
+    ] });
+  }
+};
+
+// src/main.ts
+__NgCli_bootstrap_1.platformBrowser().bootstrapModule(AppModule).catch((err) => console.error(err));
+
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYXBwLm1vZHVsZS50cyIsInNyYy9hcHAvYXBwLmNvbXBvbmVudC50cyIsInNyYy9hcHAvdGVhY2hlci1mb3JtL3RlYWNoZXItZm9ybS5jb21wb25lbnQudHMiLCJzcmMvYXBwL3RlYWNoZXItZm9ybS90ZWFjaGVyLWZvcm0uY29tcG9uZW50Lmh0bWwiLCJzcmMvbWFpbi50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBCcm93c2VyTW9kdWxlIH0gZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlcic7ICAvLyA8LS0gUmVxdWlyZWQgZm9yIGJvb3RzdHJhcHBpbmcgaW4gdGhlIGJyb3dzZXJcclxuaW1wb3J0IHsgQXBwQ29tcG9uZW50IH0gZnJvbSAnLi9hcHAuY29tcG9uZW50JztcclxuaW1wb3J0IHsgUmVhY3RpdmVGb3Jtc01vZHVsZSB9IGZyb20gJ0Bhbmd1bGFyL2Zvcm1zJzsgLy8gPC0tIEltcG9ydCBSZWFjdGl2ZUZvcm1zTW9kdWxlIGZvciByZWFjdGl2ZSBmb3Jtc1xyXG5cclxuaW1wb3J0IHsgVGVhY2hlckZvcm1Db21wb25lbnQgfSBmcm9tICcuL3RlYWNoZXItZm9ybS90ZWFjaGVyLWZvcm0uY29tcG9uZW50JzsgLy8gPC0tIFlvdXIgY29tcG9uZW50XHJcblxyXG5ATmdNb2R1bGUoe1xyXG4gIGRlY2xhcmF0aW9uczogW1xyXG4gICAgQXBwQ29tcG9uZW50LCAgICAgICAgIC8vIDwtLSBEZWNsYXJlIHlvdXIgcm9vdCBjb21wb25lbnRcclxuICAgIFRlYWNoZXJGb3JtQ29tcG9uZW50LCAvLyA8LS0gRGVjbGFyZSBhbnkgb3RoZXIgY29tcG9uZW50cyB5b3UgYXJlIHVzaW5nXHJcbiAgXSxcclxuICBpbXBvcnRzOiBbXHJcbiAgICBCcm93c2VyTW9kdWxlLCAgICAgICAgLy8gPC0tIFJlcXVpcmVkIGZvciB0aGUgcm9vdCBtb2R1bGUgKGJvb3RzdHJhcHBpbmcgdGhlIGFwcClcclxuICAgIFJlYWN0aXZlRm9ybXNNb2R1bGUsICAvLyA8LS0gSW1wb3J0IGZvciByZWFjdGl2ZSBmb3JtcyB1c2FnZVxyXG4gIF0sXHJcbiAgcHJvdmlkZXJzOiBbXSxcclxuICBib290c3RyYXA6IFtBcHBDb21wb25lbnRdLCAgLy8gPC0tIEJvb3RzdHJhcCB0aGUgcm9vdCBjb21wb25lbnRcclxufSlcclxuZXhwb3J0IGNsYXNzIEFwcE1vZHVsZSB7IH1cclxuIiwiaW1wb3J0IHsgQ29tcG9uZW50IH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcblxyXG5AQ29tcG9uZW50KHtcclxuICBzZWxlY3RvcjogJ2FwcC1yb290JyxcclxuICB0ZW1wbGF0ZVVybDogJy4vYXBwLmNvbXBvbmVudC5odG1sJyxcclxuICBzdHlsZVVybDogJy4vYXBwLmNvbXBvbmVudC5zY3NzJ1xyXG59KVxyXG5leHBvcnQgY2xhc3MgQXBwQ29tcG9uZW50IHtcclxuICB0aXRsZSA9ICdhbmd1bGFyMTdfd2l0aG91dF9zdGFuZGFsb25lJztcclxufVxyXG4iLCJpbXBvcnQgeyBDb21wb25lbnQsIElucHV0LCBPdXRwdXQsIEV2ZW50RW1pdHRlciwgT25DaGFuZ2VzIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XHJcbmltcG9ydCB7IEZvcm1CdWlsZGVyLCBGb3JtR3JvdXAsIFZhbGlkYXRvcnMgfSBmcm9tICdAYW5ndWxhci9mb3Jtcyc7XHJcbmltcG9ydCB7IEh0dHBDbGllbnQgfSBmcm9tICdAYW5ndWxhci9jb21tb24vaHR0cCc7XHJcblxyXG5AQ29tcG9uZW50KHtcclxuICBzZWxlY3RvcjogJ2FwcC10ZWFjaGVyLWZvcm0nLFxyXG4gIHRlbXBsYXRlVXJsOiAnLi90ZWFjaGVyLWZvcm0uY29tcG9uZW50Lmh0bWwnLFxyXG4gIHN0eWxlVXJsczogWycuL3RlYWNoZXItZm9ybS5jb21wb25lbnQuc2NzcyddLFxyXG59KVxyXG5leHBvcnQgY2xhc3MgVGVhY2hlckZvcm1Db21wb25lbnQgaW1wbGVtZW50cyBPbkNoYW5nZXMge1xyXG4gIEBJbnB1dCgpIHRlYWNoZXI6IGFueSA9IG51bGw7XHJcbiAgQE91dHB1dCgpIHVwZGF0ZVRlYWNoZXIgPSBuZXcgRXZlbnRFbWl0dGVyPHZvaWQ+KCk7XHJcblxyXG4gIHRlYWNoZXJGb3JtOiBGb3JtR3JvdXA7XHJcbiAgZm9ybVN1Ym1pdHRlZDogYm9vbGVhbiA9IGZhbHNlOyAvLyBNYWtlIHN1cmUgZm9ybVN1Ym1pdHRlZCBpcyBkZWNsYXJlZFxyXG5cclxuICBjb25zdHJ1Y3Rvcihwcml2YXRlIGZiOiBGb3JtQnVpbGRlciwgcHJpdmF0ZSBodHRwOiBIdHRwQ2xpZW50KSB7XHJcbiAgICB0aGlzLnRlYWNoZXJGb3JtID0gdGhpcy5mYi5ncm91cCh7XHJcbiAgICAgIGlkOiBbJycsIFZhbGlkYXRvcnMucmVxdWlyZWRdLFxyXG4gICAgICBuYW1lOiBbJycsIFZhbGlkYXRvcnMucmVxdWlyZWRdLFxyXG4gICAgICBzdWJqZWN0OiBbJycsIFZhbGlkYXRvcnMucmVxdWlyZWRdLFxyXG4gICAgfSk7XHJcbiAgfVxyXG5cclxuICBuZ09uQ2hhbmdlcygpIHtcclxuICAgIGlmICh0aGlzLnRlYWNoZXIpIHtcclxuICAgICAgdGhpcy50ZWFjaGVyRm9ybS5zZXRWYWx1ZSh7XHJcbiAgICAgICAgaWQ6IHRoaXMudGVhY2hlci5pZCxcclxuICAgICAgICBuYW1lOiB0aGlzLnRlYWNoZXIubmFtZSxcclxuICAgICAgICBzdWJqZWN0OiB0aGlzLnRlYWNoZXIuc3ViamVjdCxcclxuICAgICAgfSk7XHJcbiAgICB9XHJcbiAgfVxyXG5cclxuICBvblN1Ym1pdCgpIHtcclxuICAgIHRoaXMuZm9ybVN1Ym1pdHRlZCA9IHRydWU7IC8vIFNldCBmb3JtU3VibWl0dGVkIHRvIHRydWUgb24gZm9ybSBzdWJtaXRcclxuXHJcbiAgICBpZiAodGhpcy50ZWFjaGVyRm9ybS52YWxpZCkge1xyXG4gICAgICBjb25zdCB1cGRhdGVkVGVhY2hlciA9IHRoaXMudGVhY2hlckZvcm0udmFsdWU7XHJcblxyXG4gICAgICB0aGlzLmh0dHAucHV0KGBodHRwOi8vbG9jYWxob3N0OjQwMDAvdGVhY2hlcnMvJHt1cGRhdGVkVGVhY2hlci5pZH1gLCB1cGRhdGVkVGVhY2hlcikuc3Vic2NyaWJlKHtcclxuICAgICAgICBuZXh0OiAoZGF0YSkgPT4ge1xyXG4gICAgICAgICAgY29uc29sZS5sb2coJ1RlYWNoZXIgdXBkYXRlZDonLCBkYXRhKTtcclxuICAgICAgICAgIHRoaXMudXBkYXRlVGVhY2hlci5lbWl0KCk7IC8vIEVtaXQgdXBkYXRlIGV2ZW50IHRvIHBhcmVudCBjb21wb25lbnRcclxuICAgICAgICB9LFxyXG4gICAgICAgIGVycm9yOiAoZXJyb3IpID0+IHtcclxuICAgICAgICAgIGNvbnNvbGUuZXJyb3IoJ0Vycm9yIHVwZGF0aW5nIHRlYWNoZXI6JywgZXJyb3IpO1xyXG4gICAgICAgIH0sXHJcbiAgICAgIH0pO1xyXG4gICAgfVxyXG4gIH1cclxufVxyXG4iLCI8aDIgKm5nSWY9XCJ0ZWFjaGVyXCI+RWRpdCBUZWFjaGVyPC9oMj5cclxuXHJcbjxmb3JtIFtmb3JtR3JvdXBdPVwidGVhY2hlckZvcm1cIiAobmdTdWJtaXQpPVwib25TdWJtaXQoKVwiIGNsYXNzPVwiZm9ybS1jb250YWluZXJcIj5cclxuICA8ZGl2IGNsYXNzPVwiZm9ybS1ncm91cFwiPlxyXG4gICAgPGxhYmVsIGZvcj1cImlkXCI+SUQ6PC9sYWJlbD5cclxuICAgIDxpbnB1dCBpZD1cImlkXCIgZm9ybUNvbnRyb2xOYW1lPVwiaWRcIiBwbGFjZWhvbGRlcj1cIkVudGVyIElEXCIgcmVhZG9ubHkgLz5cclxuICA8L2Rpdj5cclxuXHJcbiAgPGRpdiBjbGFzcz1cImZvcm0tZ3JvdXBcIj5cclxuICAgIDxsYWJlbCBmb3I9XCJuYW1lXCI+TmFtZSA8c3BhbiBjbGFzcz1cInJlcXVpcmVkXCI+Kjwvc3Bhbj46PC9sYWJlbD5cclxuICAgIDxpbnB1dFxyXG4gICAgICBpZD1cIm5hbWVcIlxyXG4gICAgICBmb3JtQ29udHJvbE5hbWU9XCJuYW1lXCJcclxuICAgICAgcGxhY2Vob2xkZXI9XCJFbnRlciBuYW1lXCJcclxuICAgICAgW2NsYXNzLmlzLWludmFsaWRdPVwidGVhY2hlckZvcm0uZ2V0KCduYW1lJyk/LmludmFsaWQgJiYgdGVhY2hlckZvcm0uZ2V0KCduYW1lJyk/LnRvdWNoZWRcIlxyXG4gICAgICByZXF1aXJlZFxyXG4gICAgLz5cclxuICAgIDxzcGFuICpuZ0lmPVwidGVhY2hlckZvcm0uZ2V0KCduYW1lJyk/LmludmFsaWQgJiYgdGVhY2hlckZvcm0uZ2V0KCduYW1lJyk/LnRvdWNoZWRcIiBjbGFzcz1cImVycm9yLW1lc3NhZ2VcIj5cclxuICAgICAgTmFtZSBpcyByZXF1aXJlZFxyXG4gICAgPC9zcGFuPlxyXG4gIDwvZGl2PlxyXG4gIDxkaXYgY2xhc3M9XCJmb3JtLWdyb3VwXCI+XHJcbiAgICA8bGFiZWwgZm9yPVwic3ViamVjdFwiPlN1YmplY3QgPHNwYW4gY2xhc3M9XCJyZXF1aXJlZFwiPio8L3NwYW4+OjwvbGFiZWw+XHJcbiAgICA8aW5wdXRcclxuICAgICAgaWQ9XCJzdWJqZWN0XCJcclxuICAgICAgZm9ybUNvbnRyb2xOYW1lPVwic3ViamVjdFwiXHJcbiAgICAgIHBsYWNlaG9sZGVyPVwiRW50ZXIgc3ViamVjdFwiXHJcbiAgICAgIFtjbGFzcy5pcy1pbnZhbGlkXT1cInRlYWNoZXJGb3JtLmdldCgnc3ViamVjdCcpPy5pbnZhbGlkICYmIHRlYWNoZXJGb3JtLmdldCgnc3ViamVjdCcpPy50b3VjaGVkXCJcclxuICAgICAgcmVxdWlyZWRcclxuICAgIC8+XHJcbiAgICA8c3BhbiAqbmdJZj1cInRlYWNoZXJGb3JtLmdldCgnc3ViamVjdCcpPy5pbnZhbGlkICYmIHRlYWNoZXJGb3JtLmdldCgnc3ViamVjdCcpPy50b3VjaGVkXCIgY2xhc3M9XCJlcnJvci1tZXNzYWdlXCI+XHJcbiAgICAgIFN1YmplY3QgaXMgcmVxdWlyZWRcclxuICAgIDwvc3Bhbj5cclxuICA8L2Rpdj5cclxuICA8YnV0dG9uXHJcbiAgICB0eXBlPVwic3VibWl0XCJcclxuICAgIFtkaXNhYmxlZF09XCJ0ZWFjaGVyRm9ybS5pbnZhbGlkXCJcclxuICAgIGNsYXNzPVwiYnRuLXN1Ym1pdFwiXHJcbiAgPlxyXG4gICAgVXBkYXRlIFRlYWNoZXJcclxuICA8L2J1dHRvbj5cclxuPC9mb3JtPlxyXG48ZGl2ICpuZ0lmPVwiZm9ybVN1Ym1pdHRlZFwiPlxyXG4gIDxwIGNsYXNzPVwic3VjY2Vzcy1tZXNzYWdlXCI+VGVhY2hlciB1cGRhdGVkIHN1Y2Nlc3NmdWxseSE8L3A+XHJcbjwvZGl2PlxyXG4iLCJpbXBvcnQgeyBlbmFibGVQcm9kTW9kZSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xyXG5pbXBvcnQgeyBwbGF0Zm9ybUJyb3dzZXJEeW5hbWljIH0gZnJvbSAnQGFuZ3VsYXIvcGxhdGZvcm0tYnJvd3Nlci1keW5hbWljJztcclxuaW1wb3J0IHsgQXBwTW9kdWxlIH0gZnJvbSAnLi9hcHAvYXBwLm1vZHVsZSc7XHJcblxyXG5cclxucGxhdGZvcm1Ccm93c2VyRHluYW1pYygpLmJvb3RzdHJhcE1vZHVsZShBcHBNb2R1bGUpXHJcbiAgLmNhdGNoKGVyciA9PiBjb25zb2xlLmVycm9yKGVycikpOyJdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLFNBQVMsZ0JBQWdCO0FBQ3pCLFNBQVMscUJBQXFCOzs7QUNEOUIsU0FBUyxpQkFBaUI7O0FBT3BCLElBQU8sZUFBUCxNQUFPLGNBQVk7RUFMekIsY0FBQTtBQU1FLFNBQUEsUUFBUTs7Ozt1QkFERyxlQUFZO0lBQUE7RUFBQTs7NEVBQVosZUFBWSxXQUFBLENBQUEsQ0FBQSxVQUFBLENBQUEsR0FBQSxPQUFBLEdBQUEsTUFBQSxHQUFBLFVBQUEsU0FBQSxzQkFBQSxJQUFBLEtBQUE7SUFBQSxHQUFBLFFBQUEsQ0FBQSwrU0FBQSxFQUFBLENBQUE7RUFBQTs7O2dGQUFaLGNBQVksRUFBQSxXQUFBLGdCQUFBLFVBQUEsOEJBQUEsWUFBQSxFQUFBLENBQUE7QUFBQSxH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cUJBQUEsSUFBQSxrQkFBQTtBQUNGLFFBQUEsMkJBQUEsRUFBUztBQUVYLFFBQUEseUJBQUEsSUFBQSxzQ0FBQSxHQUFBLEdBQUEsT0FBQSxDQUFBOzs7Ozs7O0FBMUNLLFFBQUEseUJBQUEsUUFBQSxJQUFBLE9BQUE7QUFFQyxRQUFBLHdCQUFBO0FBQUEsUUFBQSx5QkFBQSxhQUFBLElBQUEsV0FBQTtBQVlBLFFBQUEsd0JBQUEsRUFBQTtBQUFBLFFBQUEsMEJBQUEsZ0JBQUEsVUFBQSxJQUFBLFlBQUEsSUFBQSxNQUFBLE1BQUEsT0FBQSxPQUFBLFFBQUEsY0FBQSxVQUFBLElBQUEsWUFBQSxJQUFBLE1BQUEsTUFBQSxPQUFBLE9BQUEsUUFBQSxRQUFBO0FBR0ssUUFBQSx3QkFBQTtBQUFBLFFBQUEseUJBQUEsVUFBQSxVQUFBLElBQUEsWUFBQSxJQUFBLE1BQUEsTUFBQSxPQUFBLE9BQUEsUUFBQSxjQUFBLFVBQUEsSUFBQSxZQUFBLElBQUEsTUFBQSxNQUFBLE9BQUEsT0FBQSxRQUFBLFFBQUE7QUFVTCxRQUFBLHdCQUFBLENBQUE7QUFBQSxRQUFBLDBCQUFBLGdCQUFBLFVBQUEsSUFBQSxZQUFBLElBQUEsU0FBQSxNQUFBLE9BQUEsT0FBQSxRQUFBLGNBQUEsVUFBQSxJQUFBLFlBQUEsSUFBQSxTQUFBLE1BQUEsT0FBQSxPQUFBLFFBQUEsUUFBQTtBQUdLLFFBQUEsd0JBQUE7QUFBQSxRQUFBLHlCQUFBLFVBQUEsVUFBQSxJQUFBLFlBQUEsSUFBQSxTQUFBLE1BQUEsT0FBQSxPQUFBLFFBQUEsY0FBQSxVQUFBLElBQUEsWUFBQSxJQUFBLFNBQUEsTUFBQSxPQUFBLE9BQUEsUUFBQSxRQUFBO0FBTVAsUUFBQSx3QkFBQTtBQUFBLFFBQUEseUJBQUEsWUFBQSxJQUFBLFlBQUEsT0FBQTtBQU1FLFFBQUEsd0JBQUEsQ0FBQTtBQUFBLFFBQUEseUJBQUEsUUFBQSxJQUFBLGFBQUE7Ozs7OztpRkRqQ08sc0JBQW9CLEVBQUEsV0FBQSx3QkFBQSxVQUFBLHFEQUFBLFlBQUEsR0FBQSxDQUFBO0FBQUEsR0FBQTs7OztBRlUzQixJQUFPLFlBQVAsTUFBTyxXQUFTOzs7dUJBQVQsWUFBUztJQUFBO0VBQUE7OzRFQUFULFlBQVMsV0FBQSxDQUZSLFlBQVksRUFBQSxDQUFBO0VBQUE7OztNQUp0Qjs7TUFDQTtJQUFtQixFQUFBLENBQUE7RUFBQTs7OztBSVR2QixvQ0FBQSxFQUF5QixnQkFBZ0IsU0FBUyxFQUMvQyxNQUFNLFNBQU8sUUFBUSxNQUFNLEdBQUcsQ0FBQzsiLCJuYW1lcyI6WyJDb21wb25lbnQiXX0=

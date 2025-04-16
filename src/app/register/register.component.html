@@ -1,0 +1,36 @@
+<div class="login-container">
+    <h2>Register</h2>
+    
+    <div class="image-container">
+      <img src="assets/images/s1.jpeg" alt="school logo">
+    </div>
+    
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="name">Name:</label>
+        <input id="name" formControlName="name">
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+          Name is required!
+        </div>
+      </div>
+  
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          Invalid email!
+        </div>
+      </div>
+  
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          Password is required!
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>

@@ -1,0 +1,67 @@
+h1 {
+  text-align: center;
+  background-color: rgb(12, 12, 12);
+  color: rgb(255, 98, 0); 
+}
+
+:host {
+  background-color: hsl(71, 9%, 52%);
+}
+
+.router-outlet {
+  display: flex;
+  justify-content: center;  
+  align-items: center;     
+  height: calc(100vh - 80px);
+}
+h6{
+  text-align: left;
+  text-shadow: #ffffff;
+  -webkit-text-stroke-color: aqua;
+  text-align: left;
+
+}
+h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+.image-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 30vh; 
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+p {
+  align-items: center;
+  margin: 5px 0 0;
+  color: #ffffff;
+}
+.about-me-container {
+  display: flex;
+
+  align-items : center  ;
+  margin: 10px;
+}
+
+.profile-image {
+  width: 150px; 
+
+  height: auto;
+  border-radius: 500%;
+  margin-right: 2%; 
+}
+
+.about-me-text {
+  text-align: end;
+  max-width: 600px;
+}
+textarea{
+  align-items: center;
+  text-align: center;
+}

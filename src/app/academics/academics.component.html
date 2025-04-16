@@ -1,0 +1,49 @@
+<div class="image-container">
+  <img src="assets/images/s1.jpeg" alt="School logo" class="logo">
+</div>
+
+<section id="academics">
+  <h2>Academics</h2>
+  <div class="cards">
+      <div class="card">
+          <img src="assets/images/lab.jpeg" alt="scienceLab"> 
+          <h3>Science</h3>
+          <p>Our state-of-the-art labs provide hands-on experience for aspiring scientists.</p>
+      </div>
+      <div class="card">
+          <img src="assets/images/arts.jpg" alt="Arts">
+          <h3>Arts</h3>
+          <p>Explore your creativity through our extensive arts program.</p>
+      </div>
+      <div class="card">
+          <img src="assets/images/sports.jpg" alt="Sports">
+          <h3>Sports</h3>
+          <p>Join our championship-winning teams and stay active.</p>
+      </div>
+  </div>
+</section>  
+
+<section id="student-departments">
+  <h2>Students Details</h2>
+  <div *ngIf="students.length === 0">
+      <p>No students available.</p>
+  </div>
+  <table *ngIf="students.length > 0">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Department Join Value</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let student of students">
+              <td>{{ student.studentid }}</td>
+              <td>{{ student.studentname }}</td>
+              <td>{{ student.studentdept }}</td>
+              <td>{{ student.departmentvalue }}</td>
+          </tr>
+      </tbody>
+  </table>
+</section>

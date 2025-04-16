@@ -1,0 +1,51 @@
+#contact {
+  padding: 2rem;
+  text-align: center;
+}
+
+#contact img,
+.linkedin-link img {
+  align-items: center;
+max-width: 100%;
+height: auto;
+}
+
+#contact p {
+color: #366ba1;
+}
+
+#contact a {
+text-decoration: none;
+color: #337ab7;
+}
+
+#contact a:hover {
+color: #23527c;
+}
+
+.contact-info {
+margin: auto;
+padding: 20px;
+background-color: #f2f2f2;
+border: 1px solid #ccc;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.email {
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+.linkedin-link a {
+display: inline-block;
+margin-left: 5px;
+}
+
+.linkedin-link a:hover {
+color: #0077b5;
+}
+
+.phone-link {
+margin-top: 20px;
+}

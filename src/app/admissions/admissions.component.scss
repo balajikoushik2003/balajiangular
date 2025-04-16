@@ -1,0 +1,31 @@
+#admissions {
+    padding: 2rem;
+    text-align: center;
+    color: hsl(286, 76%, 27%)  
+  ;
+  
+    h3 {  
+      margin-top: 1.5rem;
+    }
+  
+    ul, ol {
+      padding-left: 1rem;
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; 
+    }
+    
+    .logo {
+      box-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);   
+    }
+    
+    img {
+      max-width: 100%;
+      width: 1590PX;
+      height: 598PX;
+    }
+  }
+  
